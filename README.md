@@ -1,7 +1,7 @@
 # Docker-CompassUOL 
 
-## 📌Descrição
-Este projeto descreve a implantação de uma aplicação WordPress em uma arquitetura de alta disponibilidade na AWS. Utiliza Docker, Amazon RDS para MySQL, Amazon EFS para armazenamento persistente e um Application Load Balancer para distribuir o tráfego.
+### 📌Descrição
+Este projeto descreve a implantação de uma aplicação WordPress em uma arquitetura de alta disponibilidade na AWS. Utiliza Docker, Amazon RDS para MySQL, Amazon EFS para armazenamento persistente e um Application Load      Balancer para distribuir o tráfego.
 
 ## 📌Tecnologias
 * WSL 
@@ -81,11 +81,12 @@ Este projeto descreve a implantação de uma aplicação WordPress em uma arquit
       - Public access: NO
       - Existing VPC security groups: SG_RDS
       - Initial database name: wordpress 
-   * ⚠️ Se atentar aos recursos adicionais do RDS devido a aumento no custo do serviço, cheque a documentação antes de habilitar algum recurso. 
+
+    ⚠️ Se atentar aos recursos adicionais do RDS devido a aumento no custo do serviço, cheque a documentação antes de habilitar algum recurso. 
    
  
 
-5. ### Amazon EFS: 
+6. ### Amazon EFS: 
     * Criar sistema de arquivos
     * Clique na opção customize
     * Nome: {Opcional}
@@ -99,7 +100,7 @@ Este projeto descreve a implantação de uma aplicação WordPress em uma arquit
 
  
 
-6. ### Instâncias EC2:
+7. ### Instâncias EC2:
    1. Crie uma instância pública(Bastion Host) para se conectar a instância privada
       - AMI: Ubuntu
       - Tipo: t3.micro
@@ -222,7 +223,7 @@ Este projeto descreve a implantação de uma aplicação WordPress em uma arquit
     * Va no load balancer que você criou e copie o DNS name
     * Cole no navegador e verifique se teve acesso a aplicação do wordpress
 
-    * ⚠️ Você pode acessar sua instancia privada pra verificar se os serviços estão rodando corretamente
+     ⚠️ Você pode acessar sua instancia privada pra verificar se os serviços estão rodando corretamente
       - Se conecte via ssh na sua bastion host:
 
         ˋˋˋ
