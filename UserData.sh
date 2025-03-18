@@ -48,3 +48,23 @@ EOF
 # Subir os containers do WordPress
 cd /mnt/efs/wordpress
 docker-compose up -d
+
+# Criar arquivo de Health Check
+echo "Criando o arquivo healthcheck.php..."
+sudo tee /mnt/efs/projetopress/healthcheck.php > /dev/null <<EOF
+<?php
+http_response_code(200);
+header('Content-Type: application/json');
+echo json_encode(["status" => "OK", "message" => "Health check passed"]);
+exit;
+?>
+EOF
+
+
+if sudo docker exec -i wordpress ls /var/www/html/healthcheck.php > /dev/null 2>&1; then
+  echo "Arquivo healthcheck.php criado com sucesso!"
+else
+  echo "Falha ao criar o arquivo healthcheck.php."
+fi
+
+echo "Instalação concluída!"
