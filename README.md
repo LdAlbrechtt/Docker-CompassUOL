@@ -247,9 +247,54 @@ Este projeto descreve a implantação de uma aplicação WordPress em uma arquit
         ˋˋˋ
 
    
-## 📌Monitoramento: 
+## 📌Monitoramento utilizando o CloudWatch:
+
+🔍 Vamos monitorar a quantidade de requests da aplicação através do CloudWatch e configurar ações de escalonamento via Auto Scaling Group.  
+
+1. ### Create dynamic scaling policy de Scale Out:
+   - Na aba de Auto Scaling Group selecione o grupo criado
+   - Em automatic scaling clique em  create dynamic scaling policy
+   - Policy type: Simple scaling
+   - Scaling name: scale-out-policy
+   - Take the action: ADD 1 instância
+   - And the wait: 120 segundos
+    
+2. ### Create dynamic scaling policy de Scale In:
+   - Na aba de Auto Scaling Group selecione o grupo criado
+   - Em automatic scaling clique em  create dynamic scaling policy
+   - Policy type: Simple scaling
+   - Scaling name: scale-in-policy
+   - Take the action: REMOVE 1 instância
+   - And the wait: 300 segundos
+
+3. ### Criando alarmes no CloudWatch:
+   - Na aba de CloudWatch selecione Alarms
+   - Clique em create alarm
+   - Select metric: ELB --> Seu classic load balancer --> RequestCount
+   - Threshold type: static
+   - Whenever RequestCount is..: Greater/Equal
+   - than..: 10
+   - Add Auto Scaling action
+   - Selecione o grupo do seu Auto Scaling
+   - Selecione a politica de Scale-out criada
+   - Adicione nome e descrição e crie
+     
+* Crie outro alarme para a politica de Scale-in:
+   - Clique em create alarm
+   - Select metric: ELB --> Seu classic load balancer --> RequestCount
+   - Threshold type: static
+   - Whenever RequestCount is..: lower
+   - than..: 10
+   - Add Auto Scaling action
+   - Selecione o grupo do seu Auto Scaling
+   - Selecione a politica de Scale-in criada
+   - Adicione nome e descrição e crie
+     
+* Visualizando sua configuração no automatic scaling 
+
+     ![image](https://github.com/user-attachments/assets/5ed4bc75-bed4-48fe-8473-c19b58532f9f)
 
 
-### Autor: 
+## AUTOR: 
 
   * Lucas Albrecht 
