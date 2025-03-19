@@ -4,11 +4,12 @@
 Este projeto descreve a implantação de uma aplicação WordPress em uma arquitetura de alta disponibilidade na AWS. Utiliza Docker, Amazon RDS para MySQL, Amazon EFS para armazenamento persistente e um Application Load      Balancer para distribuir o tráfego.
 
 ## 📌Tecnologias
-* WSL 
+* WSL
 * AWS EC2
 * AWS RDS
 * AWS EFS
 * AWS ALB
+* AWS CloudWatch
 * Docker
 * Docker Compose
 
@@ -18,6 +19,7 @@ Este projeto descreve a implantação de uma aplicação WordPress em uma arquit
 - Amazon EFS: Armazena arquivos estáticos e uploads do WordPress.
 - Application Load Balancer (ALB): Distribui o tráfego entre as instâncias EC2 para garantir alta disponibilidade e balanceamento de carga.
 - Auto Scaling Group: Para garantir alta disponibilidade e escalabilidade automática das instâncias EC2.
+- CloudWatch: Para monitoramento da aplicação 
 
 
 ## 📌Como usar
